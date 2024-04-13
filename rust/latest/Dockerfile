@@ -1,3 +1,5 @@
+from ghcr.io/pterodactyl/yolks:debian
+
 label author="holybaechu" maintainer="holyb@holyb.xyz"
 
 run apt update \
@@ -8,6 +10,7 @@ user container
 env USER=container HOME=/home/container
 workdir /home/container
 
-copy ./../entrypoint.sh /entrypoint.sh
+copy --chown=container:container ./../entrypoint.sh /entrypoint.sh
 run chmod +x /entrypoint.sh
+entrypoint ["/usr/bin/tini", "-g", "--"]
 cmd ["/entrypoint.sh"]

@@ -3,7 +3,7 @@ from --platform=$TARGETOS/$TARGETARCH rust:slim
 label author="holybaechu" maintainer="holyb@holyb.xyz"
 
 run apt update \
-    && apt -y install git dnsutils curl iproute2 ffmpeg tini pkg-config \
+    && apt -y install git dnsutils curl iproute2 ffmpeg tini pkg-config openssl \
     && useradd -m -d /home/container container
 
 user container

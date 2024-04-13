@@ -1,4 +1,4 @@
-name: build go
+name: build rust
 on:
   workflow_dispatch:
   schedule:
@@ -7,7 +7,7 @@ on:
     branches:
       - master
     paths:
-      - go/**
+      - rust/**
 jobs:
   push:
     name: "yolks:rust_${{ matrix.tag }}"

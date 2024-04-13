@@ -4,8 +4,5 @@ cd /home/container
 INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
-echo "d"
-
-tree
-
+chmod +x emotechat-backend
 ./emotechat-backend

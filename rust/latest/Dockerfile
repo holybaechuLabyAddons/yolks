@@ -1,5 +1,3 @@
-from --platform=$TARGETOS/$TARGETARCH rust:slim
-
 label author="holybaechu" maintainer="holyb@holyb.xyz"
 
 run apt update \
@@ -7,10 +5,9 @@ run apt update \
     && useradd -m -d /home/container container
 
 user container
-env USER=container HOME=/home/container CARGO_HOME=/home/container/.cargo
+env USER=container HOME=/home/container
 workdir /home/container
 
-copy --chown=container:container ./../entrypoint.sh /entrypoint.sh
+copy ./../entrypoint.sh /entrypoint.sh
 run chmod +x /entrypoint.sh
-entrypoint ["/usr/bin/tini", "-g", "--"]
 cmd ["/entrypoint.sh"]
